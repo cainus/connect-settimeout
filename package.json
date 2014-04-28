@@ -1,0 +1,38 @@
+{
+  "name": "connect-settimeout",
+  "version": "0.0.0",
+  "description": "a connect middleware that runs a provided function if a request lasts longer than a given duration",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cainus/connect-settimeout.git"
+  },
+  "keywords": [
+    "connect",
+    "timeout",
+    "settimeout"
+  ],
+  "author": "Gregg Caines",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cainus/connect-settimeout/issues"
+  },
+  "devDependencies" : {
+    "mocha": "1.15.1",
+    "connect": "2.11.2",
+    "express": "3.4.6",
+    "should": "2.1.1",
+    "request": "2.28.0",
+    "istanbul": "0.1.46",
+    "coveralls": "2.6.0",
+    "mocha-lcov-reporter": "0.0.1",
+    "jshint": "2.3.0"
+  },
+  "homepage": "https://github.com/cainus/connect-settimeout"
+}
