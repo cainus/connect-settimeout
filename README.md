@@ -1,7 +1,7 @@
 connect-settimeout
 ==================
 
-a connect middleware that runs a provided function if a request last longer than a given duration
+a connect middleware that runs a provided function if a request lasts longer than a given duration
 
 
 [![Build Status](https://travis-ci.org/cainus/connect-settimeout.png?branch=master)](https://travis-ci.org/cainus/connect-settimeout)
