@@ -3,6 +3,7 @@ var express = require('express');
 var connect = require('connect');
 var request = require('request');
 var should = require('should');
+var _ = require('underscore');
 var connectSetTimeout = require('../index');
 var server;
 var slowFlag;
@@ -19,12 +20,10 @@ describe("the middleware", function(){
     beforeEach(function(done){
       slowFlag = false;
       server = http.createServer(function (req, res) {
-        console.log("in the server");
         var middleware = connectSetTimeout(function(req, res){
           slowFlag = true;
         }, 2000);
         middleware(req, res, function(){
-          console.log("in the next");
           if (/slow/.test(req.url)){
             return setTimeout(function(){
               res.end("slow");
@@ -48,6 +47,37 @@ describe("the middleware", function(){
         slowFlag.should.equal(true);
         done(err);
       });
+    });
+  });
+  describe("with a different timeout name", function(){
+    afterEach(function(done){
+      server.close(function(){
+        done();
+      });
+    });
+    it("uses that timeout name", function(done){
+      this.timeout(10000);
+      server = http.createServer(function (req, res) {
+        var middleware = connectSetTimeout(function(req, res){
+          slowFlag = true;
+        }, 2000, {timeoutName : 'blah'});
+        middleware(req, res, function(){
+          if (/slow/.test(req.url)){
+            return setTimeout(function(){
+              _.keys(res.connectSetTimeouts).should.eql(['blah']);
+              res.end("slow");
+            }, 5000);
+          }
+        });
+      }).listen(port, function(err){
+        if (err) throw err;
+        request(baseUrl + '/slow', function(err, res, body){
+          slowFlag.should.equal(true);
+          done(err);
+        });
+      
+      });
+    
     });
   });
 });
