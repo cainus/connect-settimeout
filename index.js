@@ -8,9 +8,12 @@ module.exports = function(cb, duration, options){
     res.connectSetTimeouts[timeoutName] = setTimeout(function(){
       return cb(req, res);
     }, duration);
-    res.on('finish', function(evt){
+
+    function onEnd() {
       clearTimeout(res.connectSetTimeouts[timeoutName]);
-    });
+    }
+    res.on('finish', onEnd);
+    res.on('close', onEnd);
     next();
   };
 
