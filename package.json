@@ -1,6 +1,6 @@
 {
   "name": "connect-settimeout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a connect middleware that runs a provided function if a request lasts longer than a given duration",
   "main": "index.js",
   "directories": {
@@ -36,6 +36,5 @@
     "jshint": "2.3.0"
   },
   "homepage": "https://github.com/cainus/connect-settimeout",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
