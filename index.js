@@ -14,6 +14,7 @@ module.exports = function(cb, duration, options){
     }
     res.on('finish', onEnd);
     res.on('close', onEnd);
+    res.on('aborted', onEnd);
     next();
   };
 

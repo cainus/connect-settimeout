@@ -1,6 +1,6 @@
 {
   "name": "connect-settimeout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a connect middleware that runs a provided function if a request lasts longer than a given duration",
   "main": "index.js",
   "directories": {
